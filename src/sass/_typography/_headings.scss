@@ -1,0 +1,55 @@
+//------------------------------------------------------------------------
+//  $Headings
+//------------------------------------------------------------------------
+
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+h1,
+.h1 {
+    font: em(24)/(32/24) $ff-primary;
+
+    @include breakpoint($m) {
+        font-size: em(80);
+        line-height: (80/80);
+    }
+}
+
+h2,
+.h2 {
+    font: em(24)/(32/24) $ff-primary;
+
+    @include breakpoint($m) {
+        font-size: em(48);
+        line-height: (50/48);
+    }
+}
+
+h3,
+.h3 {
+    font: em(18)/(26/18) $ff-primary;
+
+    @include breakpoint($m) {
+        font-size: em(32);
+        line-height: (38/32);
+    }
+}
+
+h4,
+.h4 {
+    font: em(16)/(24/16) $ff-primary;
+
+    @include breakpoint($m) {
+        font-size: em(18);
+        line-height: (26/18);
+    }
+}
+
+.h-l {}
+.h-m {}
+.h-s {}

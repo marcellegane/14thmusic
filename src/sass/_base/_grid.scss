@@ -1,0 +1,21 @@
+//------------------------------------------------------------------------
+//  $Grid
+//------------------------------------------------------------------------
+
+
+.grid {
+    @extend %clearfix;
+    margin-left: em(-$gtr-half);
+    margin-right: em(-$gtr-half);
+}
+
+.col {
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.col-gtr {
+    @extend .col;
+    padding: 0 em($gtr-half);
+}
