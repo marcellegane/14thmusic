@@ -1,14 +1,9 @@
 {
   "name": "starter",
   "version": "1.0.0",
-  "description": "A sassy gulp starter project",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
+  "description": "A front end starter template. Uses Gulp and SASS.",
+  "author": "Marcel Legane <mlegane@gmail.com>",
+  "dependencies": {
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^1.0.1",
     "gulp-concat": "^2.4.1",

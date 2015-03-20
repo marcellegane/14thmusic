@@ -5,7 +5,6 @@ var site = (function($) {
 
     var winW = function() {
         width = $win.width();
-        console.log(width);
     };
 
     $win.on('resize', function() {
@@ -17,7 +16,10 @@ var site = (function($) {
     };
 
     return {
-        init: init
+        init: init,
+        width: function() {
+            return width;
+        }
     };
 
 })(jQuery);
