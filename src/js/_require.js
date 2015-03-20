@@ -1,27 +1,43 @@
-var site = (function($) {
+(function($,sr){
+    var debounce = function (func, threshold, execAsap) {
+        var timeout;
 
-    var $win = $(window),
-        width;
+        return function debounced () {
+            var obj = this, args = arguments;
 
-    var winW = function() {
-        width = $win.width();
-    };
+            function delayed () {
+                if (!execAsap)
+                func.apply(obj, args);
+                timeout = null;
+            };
 
-    $win.on('resize', function() {
-        winW();
-    });
+            if (timeout) {
+                clearTimeout(timeout);
+            } else if (execAsap) {
+                func.apply(obj, args);
+            }
 
-    var init = function(){
-        winW();
+            timeout = setTimeout(delayed, threshold || 100);
+        };
+    }
+    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+
+})(jQuery,'smartresize');
+
+var $win = $(window);
+
+var page = (function($) {
+
+    var width = function() {
+        return $win.width();
     };
 
     return {
-        init: init,
-        width: function() {
-            return width;
-        }
+        width: width
     };
 
 })(jQuery);
 
-site.init();
+$win.smartresize(function() {
+    console.log(page.width());
+});
