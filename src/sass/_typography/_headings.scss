@@ -15,8 +15,8 @@ h1,
     font: em(24)/(32/24) $ff-primary;
 
     @include breakpoint($m) {
-        font-size: em(80);
-        line-height: (80/80);
+        font-size: em(120);
+        line-height: (120/120);
     }
 }
 
@@ -25,8 +25,8 @@ h2,
     font: em(24)/(32/24) $ff-primary;
 
     @include breakpoint($m) {
-        font-size: em(48);
-        line-height: (50/48);
+        font-size: em(80);
+        line-height: (80/80);
     }
 }
 
@@ -35,8 +35,8 @@ h3,
     font: em(18)/(26/18) $ff-primary;
 
     @include breakpoint($m) {
-        font-size: em(32);
-        line-height: (38/32);
+        font-size: em(54);
+        line-height: (54/54);
     }
 }
 
@@ -45,8 +45,8 @@ h4,
     font: em(16)/(24/16) $ff-primary;
 
     @include breakpoint($m) {
-        font-size: em(18);
-        line-height: (26/18);
+        font-size: em(36);
+        line-height: (36/36);
     }
 }
 

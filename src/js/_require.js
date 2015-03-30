@@ -1,43 +1,50 @@
-(function($,sr){
-    var debounce = function (func, threshold, execAsap) {
-        var timeout;
+var site = (function($) {
 
-        return function debounced () {
-            var obj = this, args = arguments;
-
-            function delayed () {
-                if (!execAsap)
-                func.apply(obj, args);
-                timeout = null;
-            };
-
-            if (timeout) {
-                clearTimeout(timeout);
-            } else if (execAsap) {
-                func.apply(obj, args);
-            }
-
-            timeout = setTimeout(delayed, threshold || 100);
-        };
-    }
-    jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
-
-})(jQuery,'smartresize');
-
-var $win = $(window);
-
-var page = (function($) {
+    var $win = $(window);
 
     var width = function() {
         return $win.width();
     };
 
+    var height = function() {
+        return $win.height();
+    };
+
+    var debounce = function(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this,
+                args = arguments;
+
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
+
+    var debouncedResize = function() {
+        width();
+        height();
+    };
+
+    var resizeEvents = debounce(debouncedResize,250);
+
+    if (window.addEventListener) {
+        window.addEventListener('resize',resizeEvents);
+    } else {
+        window.attachEvent('resize',resizeEvents);
+    }
+
     return {
-        width: width
+        $win: $win,
+        width: width,
+        height: height
     };
 
 })(jQuery);
-
-$win.smartresize(function() {
-    console.log(page.width());
-});
