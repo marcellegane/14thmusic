@@ -4,16 +4,14 @@
 
 
 var gulp = require('gulp');
+var plumber = require('gulp-plumber');
+var gutil = require('gulp-util');
+var rename = require('gulp-rename');
+
+// CSS
 var sass = require('gulp-sass');
 var autoprefix = require('gulp-autoprefixer');
 var minifycss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var jshint = require('gulp-jshint');
-var newer = require('gulp-newer');
-var imagemin = require('gulp-imagemin');
-var pngcrush = require('imagemin-pngcrush');
 var postcss = require('gulp-postcss');
 var opacity = function(css) {
     css.eachDecl(function(decl, i) {
@@ -26,16 +24,62 @@ var opacity = function(css) {
     });
 };
 
+// JS
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
+
+// Other
+var newer = require('gulp-newer');
+var imagemin = require('gulp-imagemin');
+var pngcrush = require('imagemin-pngcrush');
+
+
+//------------------------------------------------------------------------
+//  $Paths
+//------------------------------------------------------------------------
+
+
+var dev = 'src/';
+var build = 'build/';
 var paths = {
-    sass: 'src/sass/**/*.scss',
-    js: 'src/js/*.js',
-    jsHead: 'src/js/header/*.js',
-    img: 'src/img/**',
-    css: 'build/css',
-    jsDist: 'build/js',
-    jsHeadDist: 'build/js/header',
-    imgDist: 'build/assets/img'
+    css: {
+        src: dev + 'sass/**/*.scss',
+        dest: build + 'css/'
+    },
+
+    js: {
+        src: dev + 'js/**/*js',
+        dest: build + 'js/',
+        user: {
+            src: dev + 'js/*.js'
+        },
+        plugins: {
+            src: dev + 'js/_plugins/*.js'
+        },
+        head: {
+            src: dev + 'js/_header/*.js',
+            dest: build + 'js/header/'
+        }
+    },
+
+    img: {
+        src: dev + 'img/**',
+        dest: build + 'assets/img/'
+    }
 };
+
+
+//------------------------------------------------------------------------
+//  $Build variables
+//------------------------------------------------------------------------
+
+
+var isProduction = true;
+
+if (gutil.env.dev === true) {
+    isProduction = false;
+}
 
 
 //------------------------------------------------------------------------
@@ -44,7 +88,7 @@ var paths = {
 
 
 gulp.task('sass', function() {
-    gulp.src(paths.sass)
+    gulp.src(paths.css.src)
         .pipe(sass({
             errLogToConsole: true
         }))
@@ -52,10 +96,9 @@ gulp.task('sass', function() {
             browsers: ['> 1%', 'Firefox > 10', 'ie 8']
         }))
         .pipe(postcss([opacity]))
-        .pipe(gulp.dest(paths.css))
-        .pipe(rename('style.min.css'))
-        .pipe(minifycss())
-        .pipe(gulp.dest(paths.css));
+        .pipe(gulp.dest(paths.css.dest))
+        .pipe(isProduction ? minifycss() : gutil.noop())
+        .pipe(gulp.dest(paths.css.dest));
 });
 
 
@@ -65,14 +108,17 @@ gulp.task('sass', function() {
 
 
 gulp.task('js', function() {
-    gulp.src(paths.js)
+    gulp.src(paths.js.user.src)
+        .pipe(plumber())
         .pipe(jshint())
-        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('default'));
+
+    gulp.src([paths.js.plugins.src, paths.js.user.src])
+        .pipe(plumber())
         .pipe(concat('scripts.js'))
-        .pipe(gulp.dest(paths.jsDist))
-        .pipe(rename('scripts.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(paths.jsDist));
+        .pipe(gulp.dest(paths.js.dest))
+        .pipe(isProduction ? uglify() : gutil.noop())
+        .pipe(gulp.dest(paths.js.dest));
 });
 
 
@@ -82,12 +128,11 @@ gulp.task('js', function() {
 
 
 gulp.task('jsHead', function() {
-    gulp.src(paths.jsHead)
+    gulp.src(paths.js.head.src)
         .pipe(concat('header.js'))
-        .pipe(gulp.dest(paths.jsHeadDist))
-        .pipe(rename('header.min.js'))
+        .pipe(gulp.dest(paths.js.head.dest))
         .pipe(uglify())
-        .pipe(gulp.dest(paths.jsHeadDist));
+        .pipe(gulp.dest(paths.js.head.dest));
 });
 
 
@@ -97,14 +142,15 @@ gulp.task('jsHead', function() {
 
 
 gulp.task('imagemin', function () {
-    gulp.src(paths.img)
-        .pipe(newer(paths.imgDist))
+    gulp.src(paths.img.src)
+        .pipe(plumber())
+        .pipe(newer(paths.img.dest))
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngcrush()]
         }))
-        .pipe(gulp.dest(paths.imgDist));
+        .pipe(gulp.dest(paths.img.dest));
 });
 
 
@@ -113,11 +159,11 @@ gulp.task('imagemin', function () {
 //------------------------------------------------------------------------
 
 
-gulp.task('watch', function() {
-    gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.js, ['js']);
-    gulp.watch(paths.jsHead, ['jsHead']);
-    gulp.watch(paths.img, ['imagemin']);
+gulp.task('watch', ['sass', 'js', 'jsHead', 'imagemin'] ,function() {
+    gulp.watch(paths.css.src, ['sass']);
+    gulp.watch(paths.js.src, ['js']);
+    gulp.watch(paths.js.head.src, ['jsHead']);
+    gulp.watch(paths.img.src, ['imagemin']);
 });
 
 

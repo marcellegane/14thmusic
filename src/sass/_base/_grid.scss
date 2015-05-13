@@ -19,3 +19,9 @@
     @extend .col;
     padding: 0 em($gtr-half);
 }
+
+@for $i from 1 through $cols {
+    .col-#{$i} {
+        width: ((100 / $cols) * $i) * 1%;
+    }
+}
