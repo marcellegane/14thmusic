@@ -10,46 +10,17 @@ h4 {
     margin: 0;
 }
 
-h1,
-.h1 {
-    font: em(24)/(32/24) $ff-primary;
-
-    @include breakpoint($m) {
-        font-size: em(120);
-        line-height: (120/120);
-    }
+.alpha,
+.beta {
+    font: em(38)/1 $ff-primary;
+    text-transform: uppercase;
 }
 
-h2,
-.h2 {
-    font: em(24)/(32/24) $ff-primary;
-
-    @include breakpoint($m) {
-        font-size: em(80);
-        line-height: (80/80);
-    }
+.alpha {
+    letter-spacing: ls(100);
 }
 
-h3,
-.h3 {
-    font: em(18)/(26/18) $ff-primary;
-
-    @include breakpoint($m) {
-        font-size: em(54);
-        line-height: (54/54);
-    }
+.beta {
+    margin-right: ls(-550);
+    letter-spacing: ls(550);
 }
-
-h4,
-.h4 {
-    font: em(16)/(24/16) $ff-primary;
-
-    @include breakpoint($m) {
-        font-size: em(36);
-        line-height: (36/36);
-    }
-}
-
-.h-l {}
-.h-m {}
-.h-s {}

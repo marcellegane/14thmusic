@@ -1,0 +1,20 @@
+//------------------------------------------------------------------------
+//  $Social
+//------------------------------------------------------------------------
+
+
+.social {
+    // margin-top: em(8);
+}
+
+.social__item {
+    display: inline-block;
+}
+
+.social__link {
+    display: block;
+    padding: em(8,14);
+    font: em(14) $ff-primary;
+    letter-spacing: ls(100);
+    text-transform: uppercase;
+}

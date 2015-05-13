@@ -1,0 +1,40 @@
+//------------------------------------------------------------------------
+//  $Samples
+//------------------------------------------------------------------------
+
+
+.samples {
+    display: inline-block;
+    width: 90%;
+    max-width: em(1014);
+    margin: 10% 0;
+    text-align: left;
+
+    @include breakpoint($m) {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        width: 80%;
+        margin: 0;
+        transform: translate(-50%,-50%);
+    }
+}
+
+.sample {
+    display: inline-block;
+    width: 12.2%;
+    height: 0;
+    padding-bottom: 12.2%;
+    margin: 2.2%;
+    background: {
+        image: url("../assets/img/1.jpg");
+        repeat: no-repeat;
+        position: center;
+        size: contain;
+    }
+    border-radius: 50%;
+}
+
+.push {
+    margin-left: 18.8%;
+}
