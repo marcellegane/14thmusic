@@ -12,6 +12,8 @@ $('.sample').each(function(i) {
     samples.push(sample);
 });
 
+// Add sample end event listener
+
 $.each(samples, function(index, sample) {
     sample.audio.addEventListener('timeupdate', function() {
         if (sample.audio.currentTime >= sample.audio.duration - 0.2) {
@@ -57,29 +59,33 @@ function getAudioExtension() {
 
 setAudioFormat(getAudioExtension());
 
-$.each(samples, function(index, sample) {
-    sample.audio.volume = 0;
-    sample.audio.play();
-});
+$(window).load(function() {
 
-// Interaction
+    $.each(samples, function(index, sample) {
+        sample.audio.volume = 0;
+        sample.audio.play();
+    });
 
-$('.sample').on('click', function() {
-    var index = $(this).data('index');
+    // Interaction
 
-    if ($(this).hasClass('playing')) {
-        $(this).removeClass('playing');
+    $('.sample').on('click', function() {
+        var index = $(this).data('index');
 
-        $(samples[index].audio).animate({
-            volume: 0
-        }, 1000);
-    } else {
-        $(this).addClass('playing');
+        if ($(this).hasClass('playing')) {
+            $(this).removeClass('playing');
 
-        $(samples[index].audio).animate({
-            volume: 1
-        }, 1000);
-    }
+            $(samples[index].audio).animate({
+                volume: 0
+            }, 1000);
+        } else {
+            $(this).addClass('playing');
 
-    return false;
+            $(samples[index].audio).animate({
+                volume: 1
+            }, 1000);
+        }
+
+        return false;
+    });
+
 });
