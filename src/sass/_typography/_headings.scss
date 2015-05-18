@@ -1,0 +1,26 @@
+//------------------------------------------------------------------------
+//  $Headings
+//------------------------------------------------------------------------
+
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+}
+
+.alpha,
+.beta {
+    font: em(38)/1 $ff-primary;
+    text-transform: uppercase;
+}
+
+.alpha {
+    letter-spacing: ls(100);
+}
+
+.beta {
+    margin-right: ls(-550);
+    letter-spacing: ls(550);
+}

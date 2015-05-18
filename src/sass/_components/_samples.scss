@@ -1,0 +1,64 @@
+//------------------------------------------------------------------------
+//  $Samples
+//------------------------------------------------------------------------
+
+
+.samples {
+    display: inline-block;
+    width: 90%;
+    max-width: em(900);
+    margin: 5% 0;
+    text-align: left;
+    transition: opacity .3s ease;
+
+    @include mq-h($m) {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        width: 80%;
+        margin: 0;
+        transform: translate(-50%,-50%);
+    }
+}
+
+.sample {
+    display: inline-block;
+    width: 12.2%;
+    height: 0;
+    padding-bottom: 12.2%;
+    margin: 2.2%;
+    background: {
+        repeat: no-repeat;
+        position: center;
+        size: contain;
+    }
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+        -webkit-backface-visibility: hidden;
+        transform: translateZ(0) scale(0.95);
+    }
+
+    &.playing {
+        opacity: 0.3;
+    }
+}
+
+.sample-0 { background-image: url("../assets/img/1-round.jpg") }
+.sample-1 { background-image: url("../assets/img/2-round.jpg") }
+.sample-2 { background-image: url("../assets/img/3-round.jpg") }
+.sample-3 { background-image: url("../assets/img/4-round.jpg") }
+.sample-4 { background-image: url("../assets/img/5-round.jpg") }
+.sample-5 { background-image: url("../assets/img/6-round.jpg") }
+.sample-6 { background-image: url("../assets/img/7-round.jpg") }
+.sample-7 { background-image: url("../assets/img/8-round.jpg") }
+.sample-8 { background-image: url("../assets/img/9-round.jpg") }
+.sample-9 { background-image: url("../assets/img/10-round.jpg") }
+.sample-10 { background-image: url("../assets/img/11-round.jpg") }
+.sample-11 { background-image: url("../assets/img/12-round.jpg") }
+.sample-12 { background-image: url("../assets/img/13-round.jpg") }
+.sample-13 { background-image: url("../assets/img/14-round.jpg") }
+
+.push {
+    margin-left: 18.8%;
+}
