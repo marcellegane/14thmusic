@@ -2,9 +2,3 @@
 .sass-cache
 *.css.map
 node_modules
-style.css
-style.min.css
-scripts.js
-scripts.min.js
-header.js
-header.min.js
