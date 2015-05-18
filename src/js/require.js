@@ -2,7 +2,7 @@
 var samples = [];
 
 $('.sample').each(function(i) {
-    var audio = new Audio,
+    var audio = new Audio(),
         src = $(this).data('file'),
         sample = {
             audio: audio,

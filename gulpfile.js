@@ -41,7 +41,7 @@ var pngcrush = require('imagemin-pngcrush');
 
 
 var dev = 'src/';
-var build = 'build/';
+var build = '';
 var paths = {
     css: {
         src: dev + 'sass/**/*.scss',
