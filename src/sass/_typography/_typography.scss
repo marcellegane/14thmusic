@@ -7,7 +7,7 @@
     display: none;
     font-size: 0;
 
-    @include breakpoint($s) {
+    @include mq($s) {
         display: block;
     }
 }
@@ -21,7 +21,7 @@
 .t-xl {
     font: em(20)/(26/20) $ff-primary;
 
-    @include breakpoint($m) {
+    @include mq($m) {
         font-size: em(26);
         line-height: (38/26);
     }
@@ -30,7 +30,7 @@
 .t-l {
     font: em(20)/(28/20) $ff-primary;
 
-    @include breakpoint($m) {
+    @include mq($m) {
         font-size: em(24);
         line-height: (36/24);
     }
@@ -40,7 +40,7 @@ p,
 .t-m {
     font: em(16)/(24/16) $ff-primary;
 
-    @include breakpoint($m) {
+    @include mq($m) {
         font-size: em(20);
         line-height: (30/20);
     }

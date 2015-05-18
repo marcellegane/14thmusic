@@ -3,7 +3,7 @@
 //------------------------------------------------------------------------
 
 
-@mixin breakpoint($breakpoint, $type: "min") {
+@mixin mq($breakpoint, $type: "min") {
     @if $type == "min" {
         @media only screen and (#{$type}-width: em($breakpoint)) {
             @content;
@@ -11,6 +11,19 @@
     }
     @if $type == "max" {
         @media only screen and (#{$type}-width: em($breakpoint - 1)) {
+            @content;
+        }
+    }
+}
+
+@mixin mq-h($breakpoint, $type: "min") {
+    @if $type == "min" {
+        @media only screen and (#{$type}-height: em($breakpoint)) {
+            @content;
+        }
+    }
+    @if $type == "max" {
+        @media only screen and (#{$type}-height: em($breakpoint - 1)) {
             @content;
         }
     }
