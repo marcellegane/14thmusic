@@ -60,16 +60,18 @@ function getAudioExtension() {
 setAudioFormat(getAudioExtension());
 
 $(window).load(function() {
-
     $.each(samples, function(index, sample) {
         sample.audio.volume = 0;
-        sample.audio.play();
     });
 
     // Interaction
 
     $('.sample').on('click', function() {
         var index = $(this).data('index');
+
+        $.each(samples, function(index, sample) {
+            sample.audio.play();
+        });
 
         if ($(this).hasClass('playing')) {
             $(this).removeClass('playing');
@@ -87,5 +89,4 @@ $(window).load(function() {
 
         return false;
     });
-
 });
