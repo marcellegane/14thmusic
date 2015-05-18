@@ -1,1 +1,93 @@
-function setAudioSrc(a,i){a.src=i}function setAudioFormat(a){$.each(samples,function(i,e){setAudioSrc(e.audio,e.src+a)})}function canPlayAudio(a){var i=document.createElement("audio");return!(!i.canPlayType||!i.canPlayType("audio/"+a+";").replace(/no/,""))}function getAudioExtension(){var a="wav";return canPlayAudio("ogg")?a=".ogg":canPlayAudio("mp4")?a=".m4a":canPlayAudio("aac")?a=".aac":canPlayAudio("mp3")&&(a=".mp3"),a}var samples=[];$(".sample").each(function(a){var i=new Audio,e=$(this).data("file"),n={audio:i,src:e};samples.push(n)}),$.each(samples,function(a,i){i.audio.addEventListener("timeupdate",function(){i.audio.currentTime>=i.audio.duration-.2&&(i.audio.currentTime=0,i.audio.play(0))})}),setAudioFormat(getAudioExtension()),$(window).load(function(){$.each(samples,function(a,i){i.audio.volume=0}),$(".sample").on("click",function(){var a=$(this).data("index");return $.each(samples,function(a,i){i.audio.play()}),$(this).hasClass("playing")?($(this).removeClass("playing"),$(samples[a].audio).animate({volume:0},1e3)):($(this).addClass("playing"),$(samples[a].audio).animate({volume:1},1e3)),!1})});
+
+
+var samples = [];
+
+$('.sample').each(function(i) {
+    var audio = new Audio(),
+        src = $(this).data('file'),
+        sample = {
+            audio: audio,
+            src: src
+        };
+
+    samples.push(sample);
+});
+
+// Add sample end event listener
+
+$.each(samples, function(index, sample) {
+    sample.audio.addEventListener('timeupdate', function() {
+        if (sample.audio.currentTime >= sample.audio.duration - 0.2) {
+            sample.audio.currentTime = 0;
+            sample.audio.play(0);
+        }
+    });
+});
+
+function setAudioSrc(sample,url) {
+    sample.src = url;
+}
+
+function setAudioFormat (ext) {
+    $.each(samples, function(index, sample) {
+        setAudioSrc(sample.audio,sample.src + ext);
+    });
+}
+
+function canPlayAudio(ext) {
+    var a = document.createElement('audio');
+    return ( !! (a.canPlayType && a.canPlayType('audio/' + ext + ';').replace(/no/, '')));
+}
+
+function getAudioExtension() {
+    var extension = 'wav';
+
+    if (canPlayAudio('ogg')) {
+        extension = '.ogg';
+    }
+    else if (canPlayAudio('mp4')) {
+        extension = '.m4a';
+    }
+    else if (canPlayAudio('aac')) {
+        extension = '.aac';
+    }
+    else if (canPlayAudio('mp3')) {
+        extension = '.mp3';
+    }
+
+    return extension;
+}
+
+setAudioFormat(getAudioExtension());
+
+$(window).load(function() {
+    $.each(samples, function(index, sample) {
+        sample.audio.volume = 0;
+    });
+
+    // Interaction
+
+    $('.sample').on('click', function() {
+        var index = $(this).data('index');
+
+        $.each(samples, function(index, sample) {
+            sample.audio.play();
+        });
+
+        if ($(this).hasClass('playing')) {
+            $(this).removeClass('playing');
+
+            $(samples[index].audio).animate({
+                volume: 0
+            }, 1000);
+        } else {
+            $(this).addClass('playing');
+
+            $(samples[index].audio).animate({
+                volume: 1
+            }, 1000);
+        }
+
+        return false;
+    });
+});
