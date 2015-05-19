@@ -1,3 +1,17 @@
+//------------------------------------------------------------------------
+//  $Fastclick
+//------------------------------------------------------------------------
+
+
+$(function() {
+    FastClick.attach(document.body);
+});
+
+
+//------------------------------------------------------------------------
+//  $Samples
+//------------------------------------------------------------------------
+
 
 var samples = [];
 
@@ -68,7 +82,7 @@ $(window).load(function() {
 
     // Interaction
 
-    $('.sample').on('click', function() {
+    $('.sample').on('click touchend', function() {
         var index = $(this).data('index');
 
         $.each(samples, function(index, sample) {
