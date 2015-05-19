@@ -61,6 +61,8 @@ function getAudioExtension() {
 setAudioFormat(getAudioExtension());
 
 $(window).load(function() {
+    $('body').addClass('loaded');
+
     $.each(samples, function(index, sample) {
         sample.audio.volume = 0;
     });

@@ -1,4 +1,56 @@
 //------------------------------------------------------------------------
+//  $Preloader
+//------------------------------------------------------------------------
+
+
+.preloader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    transform: translate(-50%,-50%);
+
+    .loaded & {
+        display: none;
+    }
+
+    &:before {
+        content: 'Loading samples';
+        display: block;
+        margin-bottom: 0.5em;
+        font-size: em(21);
+        letter-spacing: ls(200);
+        text-transform: uppercase;
+    }
+
+    span {
+        display: inline-block;
+        width: em(10);
+        height: em(6);
+        margin: 0 em(2);
+        background-color: $black;
+        animation: preload 1.4s ease-in-out infinite;
+
+        @for $i from 1 through 5 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{0.2 * $i}s;
+            }
+        }
+    }
+}
+
+@keyframes preload {
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(3.4);
+    }
+}
+
+
+//------------------------------------------------------------------------
 //  $Samples
 //------------------------------------------------------------------------
 
@@ -14,10 +66,14 @@
     @include mq-h($m) {
         position: absolute;
         top: 45%;
-        left: 50%;
+        left: -50%;
         width: 80%;
         margin: 0;
         transform: translate(-50%,-50%);
+
+        .loaded & {
+            left: 50%;
+        }
     }
 }
 
@@ -56,7 +112,6 @@
             size: contain;
         }
         opacity: 0;
-        animation: enter 1s ease-in-out forwards;
     }
 }
 
@@ -68,12 +123,15 @@
 
 $index: 1;
 $samples: 14;
-@while $samples > 0 {
-    .sample-#{$samples}:before {
-        animation-delay: ( #{0.15 * $index}s );
+.loaded & {
+    @while $samples > 0 {
+        .sample-#{$samples}:before {
+            animation: enter 1s ease-in-out forwards;
+            animation-delay: ( #{0.15 * $index}s );
+        }
+        $index: $index + 1;
+        $samples: $samples - 1;
     }
-    $index: $index + 1;
-    $samples: $samples - 1;
 }
 
 @keyframes enter {
