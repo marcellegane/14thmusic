@@ -22,27 +22,13 @@
 }
 
 .sample {
+    position: relative;
     display: inline-block;
     width: 12.2%;
     height: 0;
     padding-bottom: 12.2%;
     margin: 2.2%;
-    opacity: 0;
-    background: {
-        color: $black;
-        repeat: no-repeat;
-        position: center;
-        size: cover;
-    }
-    border-radius: 50%;
-    transition: all 0.15s ease-in-out;
-
-    @include mq(1125) {
-        width: em(110);
-        height: em(110);
-        margin: em(20);
-        padding-bottom: 0;
-    }
+    transition: all 0.2s ease;
 
     &:hover {
         -webkit-backface-visibility: hidden;
@@ -52,87 +38,52 @@
     &.playing {
         opacity: 0.3 !important;
     }
-}
 
+    &:nth-child(6) {
+        margin-left: 18.8%;
+    }
 
-//------------------------------------------------------------------------
-//  $Animation
-//------------------------------------------------------------------------
-
-
-$animation-duration: 0.3s;
-
-@for $i from 0 through 4 {
-    .sample-#{$i} {
-        animation: enter-r $animation-duration ease-in-out forwards;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: {
+            repeat: no-repeat;
+            position: center;
+            size: contain;
+        }
+        opacity: 0;
+        animation: enter 1s ease-in-out forwards;
     }
 }
 
-@for $i from 5 through 9 {
-    .sample-#{$i} {
-        animation: enter-l $animation-duration ease-in-out forwards;
+@for $i from 1 through 14 {
+    .sample-#{$i}:before {
+        background-image: url("../assets/img/#{$i}-round.jpg");
     }
 }
 
-@for $i from 10 through 13 {
-    .sample-#{$i} {
-        animation: enter-r $animation-duration ease-in-out forwards;
+$index: 1;
+$samples: 14;
+@while $samples > 0 {
+    .sample-#{$samples}:before {
+        animation-delay: ( #{0.15 * $index}s );
     }
+    $index: $index + 1;
+    $samples: $samples - 1;
 }
 
-@for $i from 0 through 4 {
-    .enter-#{$i} {
-        animation-delay: ( #{0.1 * ($i)}s );
-    }
-}
-
-
-//------------------------------------------------------------------------
-//  $Keyframes
-//------------------------------------------------------------------------
-
-
-$animation-distance: 250;
-
-@keyframes enter-l {
+@keyframes enter {
     0% {
         opacity: 0;
-        transform: translateX(em(-$animation-distance));
+        transform: translateY(em(-150));
     }
 
     100% {
         opacity: 1;
         transform: translateX(0);
     }
-}
-
-@keyframes enter-r {
-    0% {
-        opacity: 0;
-        transform: translateX(em($animation-distance));
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.sample-0 { background-image: url("../assets/img/1.jpg") }
-.sample-1 { background-image: url("../assets/img/2.jpg") }
-.sample-2 { background-image: url("../assets/img/3.jpg") }
-.sample-3 { background-image: url("../assets/img/4.jpg") }
-.sample-4 { background-image: url("../assets/img/5.jpg") }
-.sample-5 { background-image: url("../assets/img/6.jpg") }
-.sample-6 { background-image: url("../assets/img/7.jpg") }
-.sample-7 { background-image: url("../assets/img/8.jpg") }
-.sample-8 { background-image: url("../assets/img/9.jpg") }
-.sample-9 { background-image: url("../assets/img/10.jpg") }
-.sample-10 { background-image: url("../assets/img/11.jpg") }
-.sample-11 { background-image: url("../assets/img/12.jpg") }
-.sample-12 { background-image: url("../assets/img/13.jpg") }
-.sample-13 { background-image: url("../assets/img/14.jpg") }
-
-.push {
-    margin-left: 18.8%;
 }
