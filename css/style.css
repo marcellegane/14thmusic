@@ -588,9 +588,18 @@ blockquote p {
     height: 0.375em;
     margin: 0 0.125em;
     background-color: #000;
-    -webkit-animation: preload 1.4s ease-in-out infinite;
-       -moz-animation: preload 1.4s ease-in-out infinite;
-            animation: preload 1.4s ease-in-out infinite; }
+    -webkit-animation-name: preload;
+       -moz-animation-name: preload;
+            animation-name: preload;
+    -webkit-animation-duration: 1.4s;
+       -moz-animation-duration: 1.4s;
+            animation-duration: 1.4s;
+    -webkit-animation-timing-function: ease-in-out;
+       -moz-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+       -moz-animation-fill-mode: forwards;
+            animation-fill-mode: forwards; }
     .preloader span:nth-child(1) {
       -webkit-animation-delay: 0.2s;
          -moz-animation-delay: 0.2s;

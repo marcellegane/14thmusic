@@ -29,7 +29,10 @@
         height: em(6);
         margin: 0 em(2);
         background-color: $black;
-        animation: preload 1.4s ease-in-out infinite;
+        animation-name: preload;
+        animation-duration: 1.4s;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
 
         @for $i from 1 through 5 {
             &:nth-child(#{$i}) {
