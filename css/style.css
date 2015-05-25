@@ -427,7 +427,7 @@ html {
 body {
   font-size: 1em;
   line-height: 1.5;
-  font-family: "aw-conqueror-sans", sans-serif;
+  font-family: "aw-conqueror-sans", Verdana;
   text-align: center;
   color: #000;
   background: #fff; }
@@ -502,7 +502,7 @@ h1, h2, h3, h4 {
   margin: 0; }
 
 .alpha, .beta {
-  font: 2.375em/1 "aw-conqueror-sans", sans-serif;
+  font: 2.375em/1 "aw-conqueror-sans", Verdana;
   text-transform: uppercase; }
 
 .alpha {
@@ -520,31 +520,31 @@ h1, h2, h3, h4 {
       display: block; } }
 
 .t-xl {
-  font: 1.25em/1.3 "aw-conqueror-sans", sans-serif; }
+  font: 1.25em/1.3 "aw-conqueror-sans", Verdana; }
   @media only screen and (min-width: 48em) {
     .t-xl {
       font-size: 1.625em;
       line-height: 1.46154; } }
 
 .t-l {
-  font: 1.25em/1.4 "aw-conqueror-sans", sans-serif; }
+  font: 1.25em/1.4 "aw-conqueror-sans", Verdana; }
   @media only screen and (min-width: 48em) {
     .t-l {
       font-size: 1.5em;
       line-height: 1.5; } }
 
 p, .t-m {
-  font: 1em/1.5 "aw-conqueror-sans", sans-serif; }
+  font: 1em/1.5 "aw-conqueror-sans", Verdana; }
   @media only screen and (min-width: 48em) {
     p, .t-m {
       font-size: 1.25em;
       line-height: 1.5; } }
 
 .t-s {
-  font: 1em/1.5 "aw-conqueror-sans", sans-serif; }
+  font: 1em/1.5 "aw-conqueror-sans", Verdana; }
 
 .t-xs {
-  font: 0.8125em/1.38462 "aw-conqueror-sans", sans-serif; }
+  font: 0.8125em/1.38462 "aw-conqueror-sans", Verdana; }
 
 blockquote p {
   font-size: 1.25em;
@@ -560,11 +560,11 @@ blockquote p {
 .social__link {
   display: block;
   padding: 0.57143em 0.57143em 0;
-  font: 0.875em "aw-conqueror-sans", sans-serif;
+  font: 0.875em "aw-conqueror-sans", Verdana;
   letter-spacing: 0.1em;
   text-transform: uppercase; }
 
-.samples {
+.game {
   display: inline-block;
   width: 90%;
   max-width: 56.25em;
@@ -574,9 +574,9 @@ blockquote p {
      -moz-transition: opacity .3s ease;
           transition: opacity .3s ease; }
   @media only screen and (min-height: 48em) {
-    .samples {
+    .game {
       position: absolute;
-      top: 45%;
+      top: 50%;
       left: -50%;
       width: 80%;
       margin: 0;
@@ -584,7 +584,7 @@ blockquote p {
          -moz-transform: translate(-50%, -50%);
           -ms-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%); }
-      .loaded .samples {
+      .loaded .game {
         left: 50%; } }
 
 .sample {
@@ -594,6 +594,8 @@ blockquote p {
   height: 0;
   padding-bottom: 12.2%;
   margin: 2.2%;
+  opacity: 0.3;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   -webkit-transition: all 0.2s ease;
      -moz-transition: all 0.2s ease;
           transition: all 0.2s ease; }
@@ -602,11 +604,6 @@ blockquote p {
     -webkit-transform: translateZ(0) scale(0.95);
        -moz-transform: translateZ(0) scale(0.95);
             transform: translateZ(0) scale(0.95); }
-  .sample.playing {
-    opacity: 0.3 !important;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)"; }
-  .sample:nth-child(6) {
-    margin-left: 18.8%; }
   .sample:before {
     content: '';
     position: absolute;
@@ -619,141 +616,157 @@ blockquote p {
     background-size: contain;
     opacity: 0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+  .sample.is-chosen {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+    .sample.is-chosen:hover {
+      -webkit-transform: none;
+         -moz-transform: none;
+          -ms-transform: none;
+              transform: none; }
+  .found .sample {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-transition: opacity 2s ease;
+       -moz-transition: opacity 2s ease;
+            transition: opacity 2s ease; }
+  .sample:nth-child(6) {
+    margin-left: 18.8%; }
 
-.sample-1:before {
+.sample:nth-child(1):before {
   background-image: url("../assets/img/1-round.jpg"); }
 
-.sample-2:before {
+.sample:nth-child(2):before {
   background-image: url("../assets/img/2-round.jpg"); }
 
-.sample-3:before {
+.sample:nth-child(3):before {
   background-image: url("../assets/img/3-round.jpg"); }
 
-.sample-4:before {
+.sample:nth-child(4):before {
   background-image: url("../assets/img/4-round.jpg"); }
 
-.sample-5:before {
+.sample:nth-child(5):before {
   background-image: url("../assets/img/5-round.jpg"); }
 
-.sample-6:before {
+.sample:nth-child(6):before {
   background-image: url("../assets/img/6-round.jpg"); }
 
-.sample-7:before {
+.sample:nth-child(7):before {
   background-image: url("../assets/img/7-round.jpg"); }
 
-.sample-8:before {
+.sample:nth-child(8):before {
   background-image: url("../assets/img/8-round.jpg"); }
 
-.sample-9:before {
+.sample:nth-child(9):before {
   background-image: url("../assets/img/9-round.jpg"); }
 
-.sample-10:before {
+.sample:nth-child(10):before {
   background-image: url("../assets/img/10-round.jpg"); }
 
-.sample-11:before {
+.sample:nth-child(11):before {
   background-image: url("../assets/img/11-round.jpg"); }
 
-.sample-12:before {
+.sample:nth-child(12):before {
   background-image: url("../assets/img/12-round.jpg"); }
 
-.sample-13:before {
+.sample:nth-child(13):before {
   background-image: url("../assets/img/13-round.jpg"); }
 
-.sample-14:before {
+.sample:nth-child(14):before {
   background-image: url("../assets/img/14-round.jpg"); }
 
-.loaded .sample-14:before {
+.loaded .sample:nth-child(14):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 0.15s;
      -moz-animation-delay: 0.15s;
           animation-delay: 0.15s; }
-.loaded .sample-13:before {
+.loaded .sample:nth-child(13):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 0.3s;
      -moz-animation-delay: 0.3s;
           animation-delay: 0.3s; }
-.loaded .sample-12:before {
+.loaded .sample:nth-child(12):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 0.45s;
      -moz-animation-delay: 0.45s;
           animation-delay: 0.45s; }
-.loaded .sample-11:before {
+.loaded .sample:nth-child(11):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 0.6s;
      -moz-animation-delay: 0.6s;
           animation-delay: 0.6s; }
-.loaded .sample-10:before {
+.loaded .sample:nth-child(10):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 0.75s;
      -moz-animation-delay: 0.75s;
           animation-delay: 0.75s; }
-.loaded .sample-9:before {
+.loaded .sample:nth-child(9):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 0.9s;
      -moz-animation-delay: 0.9s;
           animation-delay: 0.9s; }
-.loaded .sample-8:before {
+.loaded .sample:nth-child(8):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 1.05s;
      -moz-animation-delay: 1.05s;
           animation-delay: 1.05s; }
-.loaded .sample-7:before {
+.loaded .sample:nth-child(7):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 1.2s;
      -moz-animation-delay: 1.2s;
           animation-delay: 1.2s; }
-.loaded .sample-6:before {
+.loaded .sample:nth-child(6):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 1.35s;
      -moz-animation-delay: 1.35s;
           animation-delay: 1.35s; }
-.loaded .sample-5:before {
+.loaded .sample:nth-child(5):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 1.5s;
      -moz-animation-delay: 1.5s;
           animation-delay: 1.5s; }
-.loaded .sample-4:before {
+.loaded .sample:nth-child(4):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 1.65s;
      -moz-animation-delay: 1.65s;
           animation-delay: 1.65s; }
-.loaded .sample-3:before {
+.loaded .sample:nth-child(3):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 1.8s;
      -moz-animation-delay: 1.8s;
           animation-delay: 1.8s; }
-.loaded .sample-2:before {
+.loaded .sample:nth-child(2):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
   -webkit-animation-delay: 1.95s;
      -moz-animation-delay: 1.95s;
           animation-delay: 1.95s; }
-.loaded .sample-1:before {
+.loaded .sample:nth-child(1):before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
           animation: enter 1s ease-in-out forwards;
@@ -801,6 +814,18 @@ blockquote p {
     -webkit-transform: translateX(0);
        -moz-transform: translateX(0);
             transform: translateX(0); } }
+
+.counter {
+  text-align: center;
+  -webkit-transition: opacity 1s ease;
+     -moz-transition: opacity 1s ease;
+          transition: opacity 1s ease; }
+  .found .counter {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
+
+.counter__text {
+  font-size: 1.5em; }
 
 .flow > * + *, blockquote > * + * {
   margin-top: 1em; }

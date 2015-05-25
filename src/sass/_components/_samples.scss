@@ -1,9 +1,9 @@
 //------------------------------------------------------------------------
-//  $Samples
+//  $Game
 //------------------------------------------------------------------------
 
 
-.samples {
+.game {
     display: inline-block;
     width: 90%;
     max-width: em(900);
@@ -13,7 +13,7 @@
 
     @include mq-h($m) {
         position: absolute;
-        top: 45%;
+        top: 50%;
         left: -50%;
         width: 80%;
         margin: 0;
@@ -25,6 +25,12 @@
     }
 }
 
+
+//------------------------------------------------------------------------
+//  $Samples
+//------------------------------------------------------------------------
+
+
 .sample {
     position: relative;
     display: inline-block;
@@ -32,19 +38,12 @@
     height: 0;
     padding-bottom: 12.2%;
     margin: 2.2%;
+    opacity: 0.3;
     transition: all 0.2s ease;
 
     &:hover {
         -webkit-backface-visibility: hidden;
         transform: translateZ(0) scale(0.95);
-    }
-
-    &.playing {
-        opacity: 0.3 !important;
-    }
-
-    &:nth-child(6) {
-        margin-left: 18.8%;
     }
 
     &:before {
@@ -61,10 +60,27 @@
         }
         opacity: 0;
     }
+
+    &.is-chosen {
+        opacity: 1;
+
+        &:hover {
+            transform: none;
+        }
+    }
+
+    .found & {
+        opacity: 1;
+        transition: opacity 2s ease;
+    }
+
+    &:nth-child(6) {
+        margin-left: 18.8%;
+    }
 }
 
 @for $i from 1 through 14 {
-    .sample-#{$i}:before {
+    .sample:nth-child(#{$i}):before {
         background-image: url("../assets/img/#{$i}-round.jpg");
     }
 }
@@ -73,7 +89,7 @@ $index: 1;
 $samples: 14;
 .loaded & {
     @while $samples > 0 {
-        .sample-#{$samples}:before {
+        .sample:nth-child(#{$samples}):before {
             animation: enter 1s ease-in-out forwards;
             animation-delay: ( #{0.15 * $index}s );
         }
@@ -92,4 +108,23 @@ $samples: 14;
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+
+//------------------------------------------------------------------------
+//  $Counter
+//------------------------------------------------------------------------
+
+
+.counter {
+    text-align: center;
+    transition: opacity 1s ease;
+
+    .found & {
+        opacity: 0;
+    }
+}
+
+.counter__text {
+    font-size: 1.5em;
 }
