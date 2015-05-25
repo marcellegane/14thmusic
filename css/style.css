@@ -564,92 +564,6 @@ blockquote p {
   letter-spacing: 0.1em;
   text-transform: uppercase; }
 
-.preloader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: inline-block;
-  -webkit-transform: translate(-50%, -50%);
-     -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
-  .loaded .preloader {
-    display: none; }
-  .preloader:before {
-    content: 'Loading samples';
-    display: block;
-    margin-bottom: 0.5em;
-    font-size: 1.3125em;
-    letter-spacing: 0.2em;
-    text-transform: uppercase; }
-  .preloader span {
-    display: inline-block;
-    width: 0.625em;
-    height: 0.375em;
-    margin: 0 0.125em;
-    background-color: #000;
-    -webkit-animation-name: preload;
-       -moz-animation-name: preload;
-            animation-name: preload;
-    -webkit-animation-duration: 1.4s;
-       -moz-animation-duration: 1.4s;
-            animation-duration: 1.4s;
-    -webkit-animation-timing-function: ease-in-out;
-       -moz-animation-timing-function: ease-in-out;
-            animation-timing-function: ease-in-out;
-    -webkit-animation-fill-mode: forwards;
-       -moz-animation-fill-mode: forwards;
-            animation-fill-mode: forwards; }
-    .preloader span:nth-child(1) {
-      -webkit-animation-delay: 0.2s;
-         -moz-animation-delay: 0.2s;
-              animation-delay: 0.2s; }
-    .preloader span:nth-child(2) {
-      -webkit-animation-delay: 0.4s;
-         -moz-animation-delay: 0.4s;
-              animation-delay: 0.4s; }
-    .preloader span:nth-child(3) {
-      -webkit-animation-delay: 0.6s;
-         -moz-animation-delay: 0.6s;
-              animation-delay: 0.6s; }
-    .preloader span:nth-child(4) {
-      -webkit-animation-delay: 0.8s;
-         -moz-animation-delay: 0.8s;
-              animation-delay: 0.8s; }
-    .preloader span:nth-child(5) {
-      -webkit-animation-delay: 1s;
-         -moz-animation-delay: 1s;
-              animation-delay: 1s; }
-
-@-webkit-keyframes preload {
-  0%, 100% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1); }
-
-  50% {
-    -webkit-transform: scaleY(3.4);
-            transform: scaleY(3.4); } }
-
-@-moz-keyframes preload {
-  0%, 100% {
-    -moz-transform: scaleY(1);
-         transform: scaleY(1); }
-
-  50% {
-    -moz-transform: scaleY(3.4);
-         transform: scaleY(3.4); } }
-
-@keyframes preload {
-  0%, 100% {
-    -webkit-transform: scaleY(1);
-       -moz-transform: scaleY(1);
-            transform: scaleY(1); }
-
-  50% {
-    -webkit-transform: scaleY(3.4);
-       -moz-transform: scaleY(3.4);
-            transform: scaleY(3.4); } }
-
 .samples {
   display: inline-block;
   width: 90%;
@@ -751,59 +665,101 @@ blockquote p {
 .loaded .sample-14:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 0.15s;
+     -moz-animation-delay: 0.15s;
+          animation-delay: 0.15s; }
 .loaded .sample-13:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 0.3s;
+     -moz-animation-delay: 0.3s;
+          animation-delay: 0.3s; }
 .loaded .sample-12:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 0.45s;
+     -moz-animation-delay: 0.45s;
+          animation-delay: 0.45s; }
 .loaded .sample-11:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 0.6s;
+     -moz-animation-delay: 0.6s;
+          animation-delay: 0.6s; }
 .loaded .sample-10:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 0.75s;
+     -moz-animation-delay: 0.75s;
+          animation-delay: 0.75s; }
 .loaded .sample-9:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 0.9s;
+     -moz-animation-delay: 0.9s;
+          animation-delay: 0.9s; }
 .loaded .sample-8:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 1.05s;
+     -moz-animation-delay: 1.05s;
+          animation-delay: 1.05s; }
 .loaded .sample-7:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 1.2s;
+     -moz-animation-delay: 1.2s;
+          animation-delay: 1.2s; }
 .loaded .sample-6:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 1.35s;
+     -moz-animation-delay: 1.35s;
+          animation-delay: 1.35s; }
 .loaded .sample-5:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 1.5s;
+     -moz-animation-delay: 1.5s;
+          animation-delay: 1.5s; }
 .loaded .sample-4:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 1.65s;
+     -moz-animation-delay: 1.65s;
+          animation-delay: 1.65s; }
 .loaded .sample-3:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 1.8s;
+     -moz-animation-delay: 1.8s;
+          animation-delay: 1.8s; }
 .loaded .sample-2:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 1.95s;
+     -moz-animation-delay: 1.95s;
+          animation-delay: 1.95s; }
 .loaded .sample-1:before {
   -webkit-animation: enter 1s ease-in-out forwards;
      -moz-animation: enter 1s ease-in-out forwards;
-          animation: enter 1s ease-in-out forwards; }
+          animation: enter 1s ease-in-out forwards;
+  -webkit-animation-delay: 2.1s;
+     -moz-animation-delay: 2.1s;
+          animation-delay: 2.1s; }
 
 @-webkit-keyframes enter {
   0% {
