@@ -841,41 +841,25 @@
 }());
 
 //------------------------------------------------------------------------
-//  $Fastclick
-//------------------------------------------------------------------------
-
-
-$(function() {
-    FastClick.attach(document.body);
-});
-
-
-//------------------------------------------------------------------------
 //  $Samples
 //------------------------------------------------------------------------
 
 
-var samples = [];
+var samples = [],
+    audioLoad = 0,
+    extension = '.wav';
 
-$('.sample').each(function(i) {
-    var audio = new Audio(),
-        src = $(this).data('file'),
-        sample = {
-            audio: audio,
-            src: src
-        };
-
-    samples.push(sample);
-});
-
-function setAudioSrc(sample,url) {
-    sample.src = url;
+if (canPlayAudio('ogg')) {
+    extension = '.ogg';
 }
-
-function setAudioFormat (ext) {
-    $.each(samples, function(index, sample) {
-        setAudioSrc(sample.audio,sample.src + ext);
-    });
+else if (canPlayAudio('mp4')) {
+    extension = '.m4a';
+}
+else if (canPlayAudio('aac')) {
+    extension = '.aac';
+}
+else if (canPlayAudio('mp3')) {
+    extension = '.mp3';
 }
 
 function canPlayAudio(ext) {
@@ -883,74 +867,80 @@ function canPlayAudio(ext) {
     return ( !! (a.canPlayType && a.canPlayType('audio/' + ext + ';').replace(/no/, '')));
 }
 
-function getAudioExtension() {
-    var extension = 'wav';
+$('.sample').each(function(i) {
+    var audio = new Audio(),
+        src = $(this).data('file');
 
-    if (canPlayAudio('ogg')) {
-        extension = '.ogg';
-    }
-    else if (canPlayAudio('mp4')) {
-        extension = '.m4a';
-    }
-    else if (canPlayAudio('aac')) {
-        extension = '.aac';
-    }
-    else if (canPlayAudio('mp3')) {
-        extension = '.mp3';
-    }
+    audio.src = src + extension;
+    audio.onloadeddata = function() {
+        console.log('load' + i);
+        audioLoad++;
+        if (audioLoad === 14) {
+            console.log('audioLoad');
+            runSamples();
+        }
+    };
 
-    return extension;
-}
+    samples.push(audio);
+});
 
-setAudioFormat(getAudioExtension());
 
-// Add sample end event listener
+//------------------------------------------------------------------------
+//  $Looping event listener
+//------------------------------------------------------------------------
+
 
 var preloop;
 
-if (getAudioExtension() === '.m4a') {
+if (extension === '.m4a') {
     preloop = 0.46;
 } else {
     preloop = 0.2;
 }
 
-samples[0].audio.addEventListener('timeupdate', function() {
+samples[0].addEventListener('timeupdate', function() {
     if (this.currentTime >= this.duration - preloop) {
         $.each(samples, function(index, sample){
-            sample.audio.currentTime = 0;
-            sample.audio.play(0);
+            sample.currentTime = 0;
+            sample.play(0);
         });
     }
 });
 
-$(window).load(function() {
+
+//------------------------------------------------------------------------
+//  $Load functions
+//------------------------------------------------------------------------
+
+
+function runSamples() {
+
     $('body').addClass('loaded');
 
     $.each(samples, function(index, sample) {
-        sample.audio.volume = 0;
+        this.currentTime = 0;
+        this.play();
+        this.volume = 0;
     });
 
-    $('.sample').on('click touchstart', function() {
+    $('.sample').on('click', function() {
         var index = $(this).data('index');
-
-        $.each(samples, function(index, sample) {
-            sample.audio.play();
-        });
 
         if ($(this).hasClass('playing')) {
             $(this).removeClass('playing');
 
-            $(samples[index].audio).animate({
+            $(samples[index]).animate({
                 volume: 0
             }, 1000);
         } else {
             $(this).addClass('playing');
 
-            $(samples[index].audio).animate({
+            $(samples[index]).animate({
                 volume: 1
             }, 1000);
         }
 
         return false;
     });
-});
+
+}

@@ -130,7 +130,7 @@ $samples: 14;
     @while $samples > 0 {
         .sample-#{$samples}:before {
             animation: enter 1s ease-in-out forwards;
-            animation-delay: ( #{0.15 * $index}s );
+            // animation-delay: ( #{0.15 * $index}s );
         }
         $index: $index + 1;
         $samples: $samples - 1;
