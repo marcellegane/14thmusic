@@ -15,11 +15,17 @@
     </head>
     <body>
 
-        <div class="preloader">
-            <span></span><span></span><span></span><span></span><span></span>
-        </div>
-
         <section class="game">
+            <div class="counter">
+                <p class="counter__text"><span class="found">0</span> / 4</p>
+            </div>
+
+            <div class="controls">
+                <a href="#" data-control="play" class="btn icon-play is-active"><span class="icon__text">Play</span></a>
+                <a href="#" data-control="pause" class="btn icon-pause"><span class="icon__text">Pause</span></a>
+                <a href="#" data-control="replay" class="btn icon-replay"><span class="icon__text">Replay</span></a>
+            </div>
+
             <div class="samples">
                 <a href="#" class="sample" data-index="0"></a
                 ><a href="#" class="sample" data-index="1"></a
@@ -37,10 +43,6 @@
                 ><a href="#" class="sample" data-index="11"></a
                 ><a href="#" class="sample" data-index="12"></a
                 ><a href="#" class="sample" data-index="13"></a>
-            </div>
-
-            <div class="counter">
-                <p class="counter__text"><span class="found">0</span> / 4</p>
             </div>
         </section>
 

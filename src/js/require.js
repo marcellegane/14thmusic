@@ -9,6 +9,71 @@ $(window).load(function() {
 
 
 //------------------------------------------------------------------------
+//  $Audio
+//------------------------------------------------------------------------
+
+
+var extension = '.wav',
+    audio = new Audio(),
+    audioLoad = false,
+    $btn = $('.btn');
+
+if (canPlayAudio('ogg')) {
+    extension = '.ogg';
+} else if (canPlayAudio('mp4')) {
+    extension = '.m4a';
+} else if (canPlayAudio('aac')) {
+    extension = '.aac';
+} else if (canPlayAudio('mp3')) {
+    extension = '.mp3';
+}
+
+function canPlayAudio(ext) {
+    var a = document.createElement('audio');
+    return ( !! (a.canPlayType && a.canPlayType('audio/' + ext + ';').replace(/no/, '')));
+};
+
+audio.src = "assets/audio/cover-you-teaser" + extension;
+
+audio.addEventListener('timeupdate', function() {
+    if (this.currentTime >= this.duration) {
+        audio.pause();
+        audio.currentTime = 0;
+
+        $btn.removeClass('is-active');
+    }
+});
+
+$btn.on('click', function() {
+    var control = $(this).data('control');
+
+    if (control === 'play') {
+        audio.play();
+        $btn.removeClass('is-active');
+        $(this).addClass('is-active');
+    }
+
+    if (control === 'pause') {
+        audio.pause();
+        $btn.removeClass('is-active');
+        $(this).addClass('is-active');
+    }
+
+    if (control === 'replay') {
+        $btn.removeClass('is-active');
+        $('[data-control="play"]').addClass('is-active');
+
+        audio.currentTime = 0;
+        audio.pause();
+
+        setTimeout(function() {
+            audio.play();
+        },200);
+    }
+});
+
+
+//------------------------------------------------------------------------
 //  $Game
 //------------------------------------------------------------------------
 
@@ -44,10 +109,14 @@ var sampleSelect = function() {
                 if (found === 4) {
                     play = false;
                     $('body').addClass('found');
+                    $sample.removeClass('is-chosen');
+                    audio.play();
                 }
             }
         }
     }
+
+    return false;
 };
 
 $sample.on('click', sampleSelect);

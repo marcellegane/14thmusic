@@ -429,11 +429,11 @@ body {
   line-height: 1.5;
   font-family: "aw-conqueror-sans", Verdana;
   text-align: center;
-  color: #000;
+  color: #303030;
   background: #fff; }
 
 a {
-  color: #C7533F;
+  color: #303030;
   text-decoration: none; }
 
 .grid {
@@ -496,7 +496,7 @@ a {
   color: #fff; }
 
 .c-black {
-  color: #000; }
+  color: #303030; }
 
 h1, h2, h3, h4 {
   margin: 0; }
@@ -551,8 +551,48 @@ blockquote p {
   font-style: italic;
   line-height: 1.4; }
 
+@font-face {
+  font-family: '14th';
+  src: url('../assets/fonts/14th/14th.eot?qsjjqs');
+  src: url('../assets/fonts/14th/14th.eot?#iefixqsjjqs') format('embedded-opentype'), url('../assets/fonts/14th/14th.ttf?qsjjqs') format('truetype'), url('../assets/fonts/14th/14th.woff?qsjjqs') format('woff'), url('../assets/fonts/14th/14th.svg?qsjjqs#14th') format('svg');
+  font-weight: normal;
+  font-style: normal; }
+
+[class*=" icon-"] {
+  position: relative;
+  overflow: hidden;
+  font-family: '14th';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon__text {
+  position: absolute;
+  left: 100%; }
+
+.icon-replay:before {
+  content: "\e984"; }
+
+.icon-play:before {
+  content: "\ea1c"; }
+
+.icon-pause:before {
+  content: "\ea1d"; }
+
 .btn {
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0.75em;
+  -webkit-transition: color .2s ease;
+     -moz-transition: color .2s ease;
+          transition: color .2s ease; }
+  .btn:hover, .btn.is-active {
+    color: #ACACAC; }
 
 .social__item {
   display: inline-block; }
@@ -573,12 +613,12 @@ blockquote p {
   -webkit-transition: opacity .3s ease;
      -moz-transition: opacity .3s ease;
           transition: opacity .3s ease; }
-  @media only screen and (min-height: 48em) {
+  @media only screen and (min-height: 30em) {
     .game {
       position: absolute;
       top: 50%;
       left: -50%;
-      width: 80%;
+      width: 90%;
       margin: 0;
       -webkit-transform: translate(-50%, -50%);
          -moz-transform: translate(-50%, -50%);
@@ -586,6 +626,9 @@ blockquote p {
               transform: translate(-50%, -50%); }
       .loaded .game {
         left: 50%; } }
+
+.samples {
+  margin-top: 1.25em; }
 
 .sample {
   position: relative;
@@ -598,7 +641,8 @@ blockquote p {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
   -webkit-transition: all 0.2s ease;
      -moz-transition: all 0.2s ease;
-          transition: all 0.2s ease; }
+          transition: all 0.2s ease;
+  cursor: url("../assets/img/cursor-add.png"), auto; }
   .sample:hover {
     -webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(0.95);
@@ -618,7 +662,8 @@ blockquote p {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; }
   .sample.is-chosen {
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    cursor: url("../assets/img/cursor-remove.png"), auto; }
     .sample.is-chosen:hover {
       -webkit-transform: none;
          -moz-transform: none;
@@ -629,7 +674,13 @@ blockquote p {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     -webkit-transition: opacity 2s ease;
        -moz-transition: opacity 2s ease;
-            transition: opacity 2s ease; }
+            transition: opacity 2s ease;
+    cursor: default; }
+    .found .sample:hover {
+      -webkit-transform: none;
+         -moz-transform: none;
+          -ms-transform: none;
+              transform: none; }
   .sample:nth-child(6) {
     margin-left: 18.8%; }
 
@@ -827,6 +878,21 @@ blockquote p {
 .counter__text {
   font-size: 1.5em; }
 
+.controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-transition: opacity 1s 1s ease;
+     -moz-transition: opacity 1s 1s ease;
+          transition: opacity 1s 1s ease; }
+  .found .controls {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; }
+
 .flow > * + *, blockquote > * + * {
   margin-top: 1em; }
 
@@ -856,32 +922,3 @@ blockquote p {
     .vp-m {
       padding-top: 3.75em;
       padding-bottom: 3.75em; } }
-
-.header {
-  padding-top: 10%; }
-  @media only screen and (min-width: 48em) {
-    .header {
-      padding-top: 5%; } }
-  @media only screen and (min-height: 48em) {
-    .header {
-      position: absolute;
-      left: 0;
-      right: 0;
-      padding-top: 3%; } }
-
-.footer {
-  padding: 0 5% 10%; }
-  @media only screen and (min-width: 48em) {
-    .footer {
-      padding: 0 0 5%; } }
-  @media only screen and (min-height: 48em) {
-    .footer {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding-bottom: 3%; } }
-
-.single-link {
-  margin-top: 0.5em;
-  margin-bottom: 1em; }

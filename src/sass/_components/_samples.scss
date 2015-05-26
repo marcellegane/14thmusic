@@ -11,11 +11,11 @@
     text-align: left;
     transition: opacity .3s ease;
 
-    @include mq-h($m) {
+    @include mq-h(480) {
         position: absolute;
         top: 50%;
         left: -50%;
-        width: 80%;
+        width: 90%;
         margin: 0;
         transform: translate(-50%,-50%);
 
@@ -31,6 +31,10 @@
 //------------------------------------------------------------------------
 
 
+.samples {
+    margin-top: em(20);
+}
+
 .sample {
     position: relative;
     display: inline-block;
@@ -40,6 +44,7 @@
     margin: 2.2%;
     opacity: 0.3;
     transition: all 0.2s ease;
+    cursor: url("../assets/img/cursor-add.png"), auto;
 
     &:hover {
         -webkit-backface-visibility: hidden;
@@ -63,6 +68,7 @@
 
     &.is-chosen {
         opacity: 1;
+        cursor: url("../assets/img/cursor-remove.png"), auto;
 
         &:hover {
             transform: none;
@@ -72,6 +78,11 @@
     .found & {
         opacity: 1;
         transition: opacity 2s ease;
+        cursor: default;
+
+        &:hover {
+            transform: none;
+        }
     }
 
     &:nth-child(6) {
