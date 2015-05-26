@@ -35,7 +35,7 @@ if (canPlayAudio('ogg')) {
 function canPlayAudio(ext) {
     var a = document.createElement('audio');
     return ( !! (a.canPlayType && a.canPlayType('audio/' + ext + ';').replace(/no/, '')));
-};
+}
 
 audio.src = "assets/audio/cover-you-teaser" + extension;
 
@@ -83,39 +83,50 @@ $btn.on('click', function() {
 
 
 var selected = 0,
-    selectMax = 4,
+    max = 4,
     found = 0,
+    chosen = 'is-chosen',
     $sample = $('.sample'),
     $found = $('.found'),
     play = true;
 
 var sampleSelect = function() {
-    if (play) {
-        if ($(this).hasClass('is-chosen')) {
-            $(this).removeClass('is-chosen');
-            selected--;
+    if (!play) {
+        return false;
+    }
 
-            if ($(this).data('code') === true) {
-                found--;
-                $found.html(found);
-            }
-        } else {
-            if (selected === 4) {
-                return;
-            }
+    // If already selected
+    if ($(this).hasClass(chosen)) {
+        $(this).removeClass(chosen);
+        selected--;
 
-            $(this).addClass('is-chosen');
-            selected++;
+        // If correct code block lower the count
+        if ($(this).data('code') === true) {
+            found--;
+            $found.html(found);
+        }
+    }
+    // If unselected
+    else {
+        // If maximum number of blocks are selected do nothing
+        if (selected === max) {
+            return false;
+        }
 
-            if ($(this).data('code') === true) {
-                found++;
-                $found.html(found);
-                if (found === 4) {
-                    play = false;
-                    $('body').addClass('found');
-                    $sample.removeClass('is-chosen');
-                    audio.play();
-                }
+        $(this).addClass(chosen);
+        selected++;
+
+        if ($(this).data('code') === true) {
+            // Increase the found count
+            found++;
+            $found.html(found);
+
+            // If all blocks are found start the audio
+            if (found === max) {
+                play = false;
+                $('body').addClass('found');
+                $sample.removeClass(chosen);
+                audio.play();
             }
         }
     }
