@@ -3,6 +3,10 @@
 //------------------------------------------------------------------------
 
 
+$(function() {
+    FastClick.attach(document.body);
+});
+
 $(window).load(function() {
     $('body').addClass('loaded');
 });
