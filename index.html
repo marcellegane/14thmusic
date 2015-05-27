@@ -7,15 +7,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+        <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicons/apple-touch-icon-120x120.png">
+        <link rel="icon" type="image/png" href="/assets/favicons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/assets/favicons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/assets/favicons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/assets/favicons/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="stylesheet" href="css/style.css">
+
         <script src="//use.typekit.net/hca3ygv.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
-        <link rel="stylesheet" href="css/style.css">
         <script src="js/header/header.js"></script>
     </head>
     <body>
 
-        <section class="game">
+        <main class="game">
             <div class="counter">
                 <p class="counter__text"><span class="found">0</span> / 4</p>
             </div>
@@ -44,7 +58,11 @@
                 ><a href="#" class="sample" data-index="12"></a
                 ><a href="#" class="sample" data-index="13"></a>
             </div>
-        </section>
+
+            <div class="warning is-hidden">
+                <p>Only 4 selections at a time. Remove one to continue.</p>
+            </div>
+        </main>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/libraries/jquery-1.10.2.min.js"><\/script>')</script>

@@ -74,6 +74,8 @@ $btn.on('click', function() {
             audio.play();
         },200);
     }
+
+    return false;
 });
 
 
@@ -88,6 +90,7 @@ var selected = 0,
     chosen = 'is-chosen',
     $sample = $('.sample'),
     $found = $('.found'),
+    $warning = $('.warning'),
     play = true;
 
 var sampleSelect = function() {
@@ -98,6 +101,7 @@ var sampleSelect = function() {
     // If already selected
     if ($(this).hasClass(chosen)) {
         $(this).removeClass(chosen);
+        $warning.addClass('is-hidden');
         selected--;
 
         // If correct code block lower the count
@@ -110,6 +114,7 @@ var sampleSelect = function() {
     else {
         // If maximum number of blocks are selected do nothing
         if (selected === max) {
+            $warning.removeClass('is-hidden');
             return false;
         }
 

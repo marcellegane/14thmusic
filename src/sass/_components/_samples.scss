@@ -63,7 +63,10 @@
             position: center;
             size: contain;
         }
-        opacity: 0;
+
+        .cssanimations & {
+            opacity: 0;
+        }
     }
 
     &.is-chosen {
@@ -92,13 +95,13 @@
 
 @for $i from 1 through 14 {
     .sample:nth-child(#{$i}):before {
-        background-image: url("../assets/img/#{$i}-round.jpg");
+        background-image: url("../assets/img/#{$i}.jpg");
     }
 }
 
 $index: 1;
 $samples: 14;
-.loaded & {
+.cssanimations .loaded & {
     @while $samples > 0 {
         .sample:nth-child(#{$samples}):before {
             animation: enter 1s ease-in-out forwards;
