@@ -19,3 +19,12 @@
         opacity: 1;
     }
 }
+
+.control {
+    @extend %btn;
+    @extend .icon-font;
+}
+
+[data-control="pause"]:before { @extend .icon-pause }
+[data-control="play"]:before { @extend .icon-play }
+[data-control="replay"]:before { @extend .icon-replay }

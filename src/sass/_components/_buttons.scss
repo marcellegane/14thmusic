@@ -3,14 +3,13 @@
 //------------------------------------------------------------------------
 
 
-.btn {
+%btn {
     display: inline-block;
     vertical-align: middle;
     padding: em(12);
     transition: color .2s ease;
 
-    &:hover,
-    &.is-active {
+    &:hover {
         color: $grey;
     }
 }

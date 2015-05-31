@@ -14,7 +14,8 @@
     font-style: normal;
 }
 
-[class*=" icon-"] {
+[class*=" icon-"],
+.icon-font {
     position: relative;
     overflow: hidden;
     font-family: '14th';
@@ -26,11 +27,6 @@
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-.icon__text {
-    position: absolute;
-    left: 100%;
 }
 
 .icon-replay:before {

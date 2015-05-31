@@ -16,7 +16,7 @@ $(function() {
 var extension = '.wav',
     audio = new Audio(),
     audioLoad = false,
-    $btn = $('.btn');
+    $control = $('.control');
 
 if (canPlayAudio('ogg')) {
     extension = '.ogg';
@@ -40,35 +40,26 @@ audio.addEventListener('timeupdate', function() {
         audio.pause();
         audio.currentTime = 0;
 
-        $btn.removeClass('is-active');
+        $control.attr('data-control','replay');
     }
 });
 
-$btn.on('click', function() {
-    var control = $(this).data('control');
+$control.on('click', function() {
+    var audioState = $(this).attr('data-control');
 
-    if (control === 'play') {
+    if (audioState === 'play') {
         audio.play();
-        $btn.removeClass('is-active');
-        $(this).addClass('is-active');
+        $control.attr('data-control', 'pause');
     }
 
-    if (control === 'pause') {
+    if (audioState === 'pause') {
         audio.pause();
-        $btn.removeClass('is-active');
-        $(this).addClass('is-active');
+        $control.attr('data-control', 'play');
     }
 
-    if (control === 'replay') {
-        $btn.removeClass('is-active');
-        $('[data-control="play"]').addClass('is-active');
-
-        audio.currentTime = 0;
-        audio.pause();
-
-        setTimeout(function() {
-            audio.play();
-        },200);
+    if (audioState === 'replay') {
+        audio.play();
+        $control.attr('data-control', 'pause');
     }
 
     return false;

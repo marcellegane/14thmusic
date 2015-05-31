@@ -5,7 +5,7 @@
 
 .game {
     display: inline-block;
-    width: 90%;
+    width: 80%;
     max-width: em(900);
     margin: 5% 0;
     text-align: left;
@@ -16,7 +16,7 @@
         top: 50%;
         left: -50%;
         left: 50%;
-        width: 90%;
+        width: 70%;
         margin: 0;
         transform: translate(-50%,-50%);
     }
@@ -29,7 +29,11 @@
 
 
 .samples {
-    margin-top: em(20);
+    margin-top: em(10);
+
+    @include mq($m) {
+        margin-top: em(20);
+    }
 }
 
 .sample {
